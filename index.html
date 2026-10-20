@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MARE — Морські вантажоперевезення</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05080b;--s:#0b1015;--w:#f2f2ec;--mut:#8a949c;--a:#ff5a1f;--sea:#0f2733;--line:#1a222a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--w);font-family:Montserrat,system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+h1,h2,h3{font-weight:900;text-transform:uppercase;letter-spacing:-.03em;line-height:.98}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+section{padding:120px 0}
+.pill{display:inline-flex;align-items:center;gap:10px;border:1px solid #26313a;border-radius:999px;padding:8px 18px;font-size:12px;font-weight:600;color:#cfd6db;background:#0a0f13}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--a);box-shadow:0 0 12px var(--a);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;display:flex;justify-content:center;align-items:center;padding:18px 36px;background:rgba(5,8,11,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-weight:900;font-size:24px;letter-spacing:-.04em}.logo b{color:var(--a)}
+nav ul{display:flex;gap:6px;list-style:none;padding:0}
+nav ul a{display:block;padding:9px 16px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#7d8790;transition:.3s}
+nav ul a:hover,nav ul a.on{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:12px;background:var(--a);color:#fff;font:800 15px Montserrat,sans-serif;padding:18px 32px;border-radius:999px;border:0;cursor:pointer;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.btn::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);animation:sh 3.4s infinite}
+@keyframes sh{to{left:130%}}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 50px rgba(255,90,31,.45)}
+.btn.sm{padding:11px 22px;font-size:13px}
+.btn.ghost{background:transparent;border:1px solid #33404a}
+.btn.ghost:hover{border-color:#fff;box-shadow:none}
+.js nav .btn{opacity:0;pointer-events:none;transition:opacity .6s}
+.js nav.s .btn{opacity:1;pointer-events:auto}
+.js .pg{display:none}.js .pg.on{display:block;animation:pgin .8s cubic-bezier(.2,.7,.2,1)}
+@keyframes pgin{from{opacity:0;transform:translateY(24px)}}
+@keyframes late{from{opacity:0;transform:translateY(20px)}}
+/* hero */
+nav .btn{position:absolute;right:36px}
+.hero{min-height:100vh;min-height:100svh;position:relative;overflow:hidden;display:flex;align-items:flex-start;padding:150px 0 0;background:linear-gradient(#05080b 30%,#0a1b24)}
+.hero .wrap{position:relative;z-index:3;width:100%}
+.hero h1{font-size:clamp(36px,7.4vw,118px);margin:24px 0 24px}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{display:block;font-style:normal;animation:up 1s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 span:nth-child(2) i{animation-delay:.12s;color:var(--a)}
+@keyframes up{from{transform:translateY(105%)}}
+.hero .lead{max-width:520px;color:#b9c2c8;margin-bottom:34px;animation:late 1s 1.4s both}
+.cta{display:flex;gap:14px;flex-wrap:wrap;animation:late 1s 2.6s both}
+.mark{position:absolute;left:0;right:0;bottom:2vw;text-align:center;font-weight:900;font-size:clamp(90px,27vw,430px);letter-spacing:-.06em;line-height:.8;color:transparent;-webkit-text-stroke:1px #1f3039;z-index:1;pointer-events:none;animation:late 1.8s .6s both}
+.sea{position:absolute;left:0;right:0;bottom:0;height:52%;z-index:2}
+.sea svg{width:100%;height:100%}
+.bt{animation:sail 90s linear infinite;animation-delay:-30s}
+@keyframes sail{from{transform:translateX(-640px)}to{transform:translateX(1800px)}}
+.bob{transform-box:fill-box;transform-origin:50% 100%;animation:bob 4.6s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(0) rotate(-.6deg)}to{transform:translateY(-5px) rotate(.6deg)}}
+.wv{animation:wv 7s ease-in-out infinite alternate}.w2{animation-duration:9s}
+@keyframes wv{to{transform:translateX(-60px)}}
+.tw{animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.1}50%{opacity:.9}}
+.marq{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:22px 0;background:#080c10}
+.marq div{display:inline-block;animation:slide 32s linear infinite;font-weight:900;font-size:32px;text-transform:uppercase;color:#223039}
+.marq span{margin:0 26px}.marq em{font-style:normal;color:var(--a)}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* common */
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+.head h2{font-size:clamp(32px,5.6vw,88px);max-width:900px}
+.head p{max-width:380px;color:var(--mut)}
+.big{font-size:clamp(26px,4vw,58px);font-weight:800;letter-spacing:-.03em;line-height:1.12;max-width:1000px}
+.big span{color:#4a5963}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:28px;overflow:hidden;margin-top:70px}
+.stat{padding:46px 28px;border-right:1px solid var(--line);background:var(--s)}.stat:last-child{border:0}
+.stat .n{font-size:clamp(36px,4.6vw,70px);font-weight:900;letter-spacing:-.05em;line-height:1}.stat sup{color:var(--a);font-size:.5em;vertical-align:top}
+.stat p{color:var(--mut);margin-top:10px;font-size:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--s);border:1px solid var(--line);border-radius:26px;padding:34px;transition:.4s}
+.card:hover{border-color:var(--a);transform:translateY(-6px);box-shadow:0 20px 60px rgba(255,90,31,.12)}
+.card .ic{width:50px;height:50px;border-radius:15px;background:#1a110c;display:grid;place-items:center;margin-bottom:56px;color:var(--a);font-weight:900}
+.card h3{font-size:24px;margin-bottom:12px}.card p{color:var(--mut);font-size:15px}
+/* fleet */
+.fleet{display:grid;gap:22px}
+.ship{display:grid;grid-template-columns:1.25fr 1fr;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:var(--s)}
+.ship:nth-child(even){grid-template-columns:1fr 1.25fr}.ship:nth-child(even) .art{order:2}
+.art{position:relative;min-height:340px;background:linear-gradient(#0e2330,#05080b 80%);overflow:hidden}
+.art svg{position:absolute;inset:0;width:100%;height:100%}
+.ship .tx{padding:50px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.ship small{color:var(--a);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.ship h3{font-size:clamp(28px,3.4vw,46px)}
+.spec{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:10px}
+.spec div{border-top:1px solid #26313a;padding-top:12px;font-size:12px;color:var(--mut)}.spec b{display:block;color:#fff;font-size:17px}
+/* routes */
+.rt{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1.6fr 1fr 1fr 40px;gap:20px;align-items:center;padding:26px 8px;border-bottom:1px solid var(--line);transition:.3s}
+.row:hover{background:var(--s);padding-left:24px}
+.row b{font-size:clamp(18px,2.2vw,28px);font-weight:800;letter-spacing:-.02em}
+.row span{color:var(--mut)}.row em{font-style:normal;color:var(--a);font-weight:800;justify-self:end}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.step{border-top:2px solid var(--a);padding-top:24px}
+.step b{font-size:52px;font-weight:900;color:#17212a;display:block;line-height:1}
+.step h3{font-size:20px;margin:12px 0 8px}.step p{color:var(--mut);font-size:14px}
+.quote{border:1px solid var(--line);border-radius:30px;padding:64px;text-align:center;background:var(--s)}
+.quote q{display:block;font-size:clamp(22px,3vw,40px);font-weight:800;line-height:1.2;letter-spacing:-.02em;max-width:900px;margin:0 auto 22px}
+.quote span{color:var(--mut)}
+.final{text-align:center}.final h2{font-size:clamp(36px,8vw,130px);margin-bottom:34px}.final em{font-style:normal;color:var(--a)}
+/* calc */
+.calc{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}
+.panel{background:var(--s);border:1px solid var(--line);border-radius:30px;padding:38px}
+form,.panel{display:grid;gap:16px;align-content:start}
+label{font-size:12px;font-weight:700;color:#cfd6db;display:grid;gap:8px;letter-spacing:.06em;text-transform:uppercase}
+input,select{background:#05080b;border:1px solid #26313a;border-radius:14px;padding:16px 18px;color:#fff;font:500 16px Montserrat,sans-serif;transition:.3s}
+input:focus,select:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 4px rgba(255,90,31,.18)}
+.res{background:radial-gradient(80% 80% at 80% 0%,rgba(255,90,31,.28),transparent 70%),#100b08;border-color:#4a2412;justify-content:space-between}
+.res .p{font-size:clamp(46px,6vw,92px);font-weight:900;letter-spacing:-.05em;line-height:1}
+.res .d{font-size:20px;font-weight:700;color:#ffc9b3}
+.res small{color:#a58c80}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plan{border:1px solid var(--line);border-radius:28px;padding:38px;background:var(--s)}
+.plan.f{border-color:var(--a);background:linear-gradient(#1a0f09,var(--s))}
+.plan .pr{font-size:54px;font-weight:900;letter-spacing:-.05em;margin:16px 0}.plan .pr small{font-size:14px;color:var(--mut);letter-spacing:0;font-weight:500}
+.plan ul{list-style:none;padding:0;display:grid;gap:12px;color:#cfd6db;font-size:15px}
+.plan li::before{content:"✓";color:var(--a);margin-right:10px;font-weight:800}
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:0 50px}
+.docs div{padding:20px 0;border-bottom:1px solid var(--line);font-weight:600;display:flex;gap:16px}.docs span{color:var(--a);font-weight:900}
+details{border-bottom:1px solid var(--line);padding:24px 0}
+summary{cursor:pointer;font-size:clamp(17px,2vw,24px);font-weight:800;list-style:none;display:flex;justify-content:space-between;gap:20px;letter-spacing:-.02em}
+summary::after{content:"+";color:var(--a);font-size:30px;line-height:1;transition:transform .4s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--mut);margin-top:14px;max-width:760px;animation:pgin .5s}
+#ok{min-height:24px;color:#ffb394;font-weight:700}
+footer{border-top:1px solid var(--line);padding:50px 0;overflow:hidden;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+@media(max-width:900px){
+ nav{padding:14px 18px}nav ul{display:none}section{padding:80px 0}.wrap{padding:0 20px}
+ .hero{padding-top:120px}.stats,.grid3,.ship,.ship:nth-child(even),.steps,.calc,.plans,.docs{grid-template-columns:1fr}
+ .ship:nth-child(even) .art{order:0}.ship .tx{padding:30px 24px}.art{min-height:240px}
+ .stat{border-right:0;border-bottom:1px solid var(--line)}.row{grid-template-columns:1fr auto;gap:6px}.row span:nth-child(3){display:none}
+ .quote{padding:34px 20px}.panel{padding:26px}
+}
+.biglogo{display:block;text-align:center;font-weight:900;font-size:clamp(90px,27vw,430px);letter-spacing:-.06em;line-height:.8;margin-top:60px;padding-bottom:2vw;color:var(--w);white-space:nowrap}.biglogo b{color:var(--a)}
+@media(max-width:900px){nav{background:none;border-color:transparent;backdrop-filter:none}nav.s{background:rgba(5,8,11,.85);border-color:var(--line);backdrop-filter:blur(14px)}nav .btn{right:18px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <pattern id="cn" width="60" height="40" patternUnits="userSpaceOnUse"><rect width="19" height="19" fill="#ff5a1f"/><rect x="20" width="19" height="19" fill="#d8d8d2"/><rect x="40" width="19" height="19" fill="#5d646b"/><rect y="20" width="19" height="19" fill="#d8d8d2"/><rect x="20" y="20" width="19" height="19" fill="#c2371c"/><rect x="40" y="20" width="19" height="19" fill="#ff5a1f"/></pattern>
+ <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14394a"/><stop offset="1" stop-color="#05080b"/></linearGradient></defs>
+ <symbol id="cship" viewBox="0 0 400 130"><rect x="22" y="44" width="248" height="44" fill="url(#cn)"/><rect x="42" y="24" width="168" height="20" fill="url(#cn)"/><rect x="298" y="30" width="48" height="58" fill="#e6e6e0"/><rect x="290" y="22" width="64" height="10" fill="#c9c9c2"/><rect x="305" y="40" width="34" height="5" fill="#1a1f24"/><rect x="305" y="54" width="34" height="5" fill="#1a1f24"/><rect x="316" y="6" width="14" height="16" fill="#ff5a1f"/><path d="M0 88h400l-28 36H44z" fill="#12171c"/><path d="M14 104h378l-8 12H24z" fill="#b8321a"/></symbol>
+ <symbol id="tank" viewBox="0 0 400 130"><path d="M0 76h400l-26 40H30z" fill="#12171c"/><path d="M12 94h378l-8 12H22z" fill="#b8321a"/><path d="M30 70h250" stroke="#cfd2cc" stroke-width="5"/><g fill="#9aa1a8"><rect x="50" y="62" width="14" height="8"/><rect x="120" y="62" width="14" height="8"/><rect x="190" y="62" width="14" height="8"/><rect x="250" y="62" width="14" height="8"/></g><path d="M60 62V46h190v16" stroke="#cfd2cc" stroke-width="3" fill="none"/><rect x="304" y="32" width="50" height="44" fill="#e6e6e0"/><rect x="296" y="26" width="66" height="8" fill="#c9c9c2"/><rect x="314" y="10" width="14" height="16" fill="#ff5a1f"/><rect x="312" y="44" width="34" height="5" fill="#1a1f24"/></symbol>
+ <symbol id="bulk" viewBox="0 0 400 130"><g fill="#6b747c"><path d="M30 88q0-30 20-30h34q20 0 20 30z"/><path d="M122 88q0-30 20-30h34q20 0 20 30z"/><path d="M214 88q0-30 20-30h34q20 0 20 30z"/></g><g stroke="#d6d9d3" stroke-width="3" fill="none"><path d="M104 58V16l40 26M196 58V16l40 26"/></g><rect x="306" y="34" width="46" height="54" fill="#e6e6e0"/><rect x="298" y="26" width="62" height="10" fill="#c9c9c2"/><rect x="310" y="46" width="34" height="5" fill="#1a1f24"/><rect x="316" y="10" width="14" height="16" fill="#ff5a1f"/><path d="M0 88h400l-28 36H44z" fill="#12171c"/><path d="M14 104h378l-8 12H24z" fill="#b8321a"/></symbol>
+</svg>
+
+<nav>
+ <ul><li><a href="#home" data-n="home">Головна</a></li><li><a href="#order" data-n="order">Замовлення</a></li></ul>
+ <a class="btn sm" href="#order">Розрахувати</a>
+</nav>
+
+<main class="pg on" id="home">
+ <header class="hero">
+  <div class="mark" aria-hidden="true">MARE</div>
+  <div class="wrap">
+   <span class="pill"><i></i>Рейси щотижня з Одеси та Чорноморська</span>
+   <h1><span><i>Перевозимо вантажі</i></span><span><i>через океани.</i></span></h1>
+   <p class="lead">Морська логістика для бізнесу: контейнери, насипні та наливні вантажі з гарантованими термінами й повним трекінгом.</p>
+   <div class="cta"><a class="btn" href="#order">Розрахувати вартість &nbsp;→</a><a class="btn ghost" href="#fleet">Наш флот</a></div>
+  </div>
+  <div class="sea"><svg viewBox="0 0 1600 420" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+   <g fill="#fff"><circle class="tw" cx="120" cy="30" r="2"/><circle class="tw" cx="420" cy="70" r="1.8" style="animation-delay:-1s"/><circle class="tw" cx="760" cy="24" r="2" style="animation-delay:-2s"/><circle class="tw" cx="1040" cy="80" r="1.6" style="animation-delay:-.5s"/><circle class="tw" cx="1380" cy="40" r="2" style="animation-delay:-1.6s"/><circle class="tw" cx="1520" cy="110" r="1.6" style="animation-delay:-2.4s"/></g>
+   <circle cx="1240" cy="120" r="46" fill="#f2efe0" opacity=".92"/><circle cx="1240" cy="120" r="120" fill="#9fc4d6" opacity=".08"/>
+   <rect y="318" width="1600" height="102" fill="url(#sg)"/>
+   <g class="bt"><g class="bob"><use href="#cship" x="0" y="150" width="560" height="182"/></g><path d="M-260 322h250M-200 332h180" stroke="#9fc4d6" stroke-opacity=".35" stroke-width="2"/></g>
+   <g stroke="#9fc4d6" stroke-opacity=".3" stroke-width="2" fill="none"><path class="wv" d="M-100 340q100-14 200 0t200 0 200 0 200 0 200 0 200 0 200 0 200 0 200 0"/><path class="wv w2" d="M-100 372q100-14 200 0t200 0 200 0 200 0 200 0 200 0 200 0 200 0 200 0"/><path class="wv" d="M-100 402q100-14 200 0t200 0 200 0 200 0 200 0 200 0 200 0 200 0 200 0"/></g>
+  </svg></div>
+ </header>
+
+ <section>
+  <div class="wrap">
+   <div class="big">MARE перевозить вантажі морем уже 15 років. <span>Ми поєднуємо власний флот, партнерів у 40 портах і прозору ціну без прихованих зборів, щоб ваш вантаж прийшов вчасно.</span></div>
+   <div class="stats">
+    <div class="stat"><div class="n"><span data-to="15">15</span></div><p>Років на ринку</p></div>
+    <div class="stat"><div class="n"><span data-to="40">40</span><sup>+</sup></div><p>Портів по всьому світу</p></div>
+    <div class="stat"><div class="n"><span data-to="98">98</span><sup>%</sup></div><p>Рейсів прибувають вчасно</p></div>
+    <div class="stat"><div class="n"><span data-to="12">12</span><sup>K</sup></div><p>Контейнерів на рік</p></div>
+   </div>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Що ми перевозимо</h2><p>Будь-який тип вантажу: від одного контейнера до цілого судна.</p></div>
+   <div class="grid3" id="svc"></div>
+  </div>
+ </section>
+
+ <section id="fleet" style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Наш флот</h2><p>Сучасні судна з постійним моніторингом і страхуванням на всіх етапах рейсу.</p></div>
+   <div class="fleet" id="fl"></div>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Популярні напрямки</h2><p>Орієнтовні терміни та вартість 20-футового контейнера.</p></div>
+   <div class="rt" id="rt"></div>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Як ми працюємо</h2><p>П'ять кроків від заявки до отримання вантажу.</p></div>
+   <div class="steps">
+    <div class="step"><b>1</b><h3>Заявка</h3><p>Вказуєте вантаж, маршрут і терміни.</p></div>
+    <div class="step"><b>2</b><h3>Розрахунок</h3><p>За годину надсилаємо точну ціну та графік.</p></div>
+    <div class="step"><b>3</b><h3>Завантаження</h3><p>Подаємо контейнер, оформлюємо документи.</p></div>
+    <div class="step"><b>4</b><h3>Рейс</h3><p>Стежите за судном онлайн 24/7.</p></div>
+    <div class="step"><b>5</b><h3>Видача</h3><p>Митне оформлення й доставка до дверей.</p></div>
+   </div>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap"><div class="quote"><q>MARE доставили наше обладнання з Шанхая в Одесу за 36 днів, точно по графіку. Ціна не змінилась ні на долар.</q><span>Андрій К. · Директор з логістики, AgroTech</span></div></div>
+ </section>
+
+ <section class="final" style="padding-top:0"><div class="wrap"><h2>Відправимо<br><em>ваш вантаж?</em></h2><a class="btn" href="#order">Розрахувати вартість &nbsp;→</a></div></section>
+</main>
+
+<main class="pg" id="order">
+ <section style="padding-top:170px">
+  <div class="wrap">
+   <div class="head"><div><span class="pill"><i></i>Відповідь за 1 годину</span><h2 style="margin-top:24px">Розрахунок<br>вартості</h2></div><p>Оберіть маршрут і тип вантажу. Остаточну ціну підтвердить менеджер.</p></div>
+   <div class="calc">
+    <div class="panel">
+     <label>Маршрут<select id="c1"></select></label>
+     <label>Контейнер<select id="c2"><option value="1">20' стандарт</option><option value="1.7">40' стандарт</option><option value="1.85">40' High Cube</option></select></label>
+     <label>Тип вантажу<select id="c3"><option value="1">Генеральний</option><option value="1.8">Рефрижераторний</option><option value="1.5">Небезпечний (ADR)</option></select></label>
+     <label>Кількість контейнерів<input id="c4" type="number" min="1" max="200" value="1"></label>
+    </div>
+    <div class="panel res"><small>Орієнтовна вартість</small><div class="p" id="rp">$480</div><div class="d" id="rd">≈ 2 днів у дорозі</div><small>Без урахування митних зборів та податків у порту призначення.</small></div>
+   </div>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Тарифи</h2><p>Базова ціна за один контейнер на маршруті Одеса — Констанца.</p></div>
+   <div class="plans">
+    <div class="plan"><h3>20'</h3><div class="pr">$480<small> / контейнер</small></div><ul><li>До 28 т вантажу</li><li>Страхування включено</li><li>Онлайн-трекінг</li></ul></div>
+    <div class="plan f"><h3>40'</h3><div class="pr">$816<small> / контейнер</small></div><ul><li>До 26 т вантажу</li><li>Пріоритетне завантаження</li><li>Страхування включено</li><li>Особистий менеджер</li></ul></div>
+    <div class="plan"><h3>40' HC</h3><div class="pr">$888<small> / контейнер</small></div><ul><li>Висота 2,9 м</li><li>Для габаритних вантажів</li><li>Страхування включено</li></ul></div>
+   </div>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Які документи потрібні</h2><p>Підготуйте їх заздалегідь, і ми швидко оформимо перевезення.</p></div>
+   <div class="docs"><div><span>01</span>Комерційний інвойс</div><div><span>02</span>Пакувальний лист</div><div><span>03</span>Сертифікат походження</div><div><span>04</span>Дані відправника й одержувача</div><div><span>05</span>Опис вантажу з кодом УКТЗЕД</div><div><span>06</span>Контракт або специфікація</div></div>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap">
+   <div class="head"><h2>Питання</h2></div>
+   <details open><summary>Скільки триває доставка?</summary><p>Залежить від маршруту: від 2 днів до Констанци до 38 днів до Шанхая. Точний графік надсилаємо разом із розрахунком.</p></details>
+   <details><summary>Чи застрахований вантаж?</summary><p>Так, базове страхування входить у тариф. За бажанням оформлюємо страхування на повну вартість вантажу.</p></details>
+   <details><summary>Чи можна відстежувати судно?</summary><p>Так. Ви отримуєте посилання на онлайн-карту з позицією судна та сповіщення про кожен етап.</p></details>
+   <details><summary>Чи допомагаєте з митницею?</summary><p>Наші брокери оформлюють декларації в порту відправлення й призначення та консультують щодо зборів.</p></details>
+   <details><summary>Яка мінімальна партія?</summary><p>Від одного контейнера. Для менших вантажів пропонуємо збірні перевезення LCL.</p></details>
+   <details><summary>Як відбувається оплата?</summary><p>Рахунок виставляємо в доларах або євро. Постійним клієнтам доступна відстрочка платежу.</p></details>
+  </div>
+ </section>
+
+ <section style="padding-top:0">
+  <div class="wrap">
+   <div class="calc">
+    <div><span class="pill"><i></i>Залиште заявку</span><h2 style="font-size:clamp(34px,5vw,76px);margin:22px 0">Зв'яжемось<br>за годину.</h2><p style="color:var(--mut);max-width:420px">Напишіть, що і куди потрібно перевезти. Менеджер підготує пропозицію та графік рейсів.</p><p style="margin-top:26px;font-weight:700">+380 48 000 00 00<br>cargo@mare.ua<br><span style="color:var(--mut);font-weight:500">Одеса, вул. Портова 12</span></p></div>
+    <form class="panel" id="f"><label>Ім'я<input type="text" placeholder="Іван Петренко" required></label><label>Телефон або email<input type="text" placeholder="+380..." required></label><label>Що перевозимо та куди<input type="text" placeholder="20 т зерна, Одеса → Роттердам" required></label><button class="btn" type="submit" style="justify-content:center">Надіслати заявку &nbsp;→</button><div id="ok" role="status"></div></form>
+   </div>
+  </div>
+ </section>
+</main>
+
+<footer><div class="wrap"><span>cargo@mare.ua · Одеса, Україна</span><span>© 2026 MARE. Усі права захищені.</span></div></footer>
+
+<script>
+document.documentElement.classList.add('js');
+const pgs=[...document.querySelectorAll('.pg')],links=[...document.querySelectorAll('[data-n]')];
+function show(){const h=(location.hash||'#home').slice(1),id=pgs.some(p=>p.id===h)?h:'home';
+ pgs.forEach(p=>p.classList.toggle('on',p.id===id));links.forEach(a=>a.classList.toggle('on',a.dataset.n===id));
+ if(h!=='fleet')scrollTo(0,0);else document.getElementById('fleet').scrollIntoView()}
+addEventListener('hashchange',show);show();
+const nv=document.querySelector('nav');addEventListener('scroll',()=>nv.classList.toggle('s',scrollY>320),{passive:true});
+const S=[["Контейнерні перевезення","FCL і LCL з усіх великих портів. Контейнери 20', 40' і 40'HC."],["Насипні вантажі","Зерно, руда, добрива й вугілля на балкерах різної місткості."],["Наливні вантажі","Нафтопродукти, олії та хімія на танкерах із контролем якості."],["Рефрижераторні","Фрукти, м'ясо та фармацевтика при стабільній температурі весь рейс."],["Негабарит і проєктні","Техніка й обладнання з розрахунком кріплення та такелажем."],["Митниця й страхування","Декларування, сертифікати та страхування на повну вартість."]];
+document.getElementById('svc').innerHTML=S.map((s,i)=>`<div class="card"><div class="ic">0${i+1}</div><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join('');
+const F=[["cship","Контейнеровоз","MARE Odesa",[["Місткість","8 400 TEU"],["Швидкість","22 вузли"],["Довжина","334 м"]]],["tank","Танкер","MARE Dnipro",[["Вантаж","110 000 т"],["Швидкість","15 вузлів"],["Довжина","250 м"]]],["bulk","Балкер","MARE Chornomorsk",[["Вантаж","64 000 т"],["Швидкість","14 вузлів"],["Довжина","200 м"]]]];
+document.getElementById('fl').innerHTML=F.map(f=>`<div class="ship"><div class="art"><svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice"><circle cx="470" cy="90" r="34" fill="#f2efe0" opacity=".9"/><rect y="230" width="600" height="110" fill="url(#sg)"/><g class="bob"><use href="#${f[0]}" x="60" y="70" width="480" height="156"/></g><g stroke="#9fc4d6" stroke-opacity=".35" stroke-width="2" fill="none"><path class="wv" d="M-60 250q50-10 100 0t100 0 100 0 100 0 100 0 100 0 100 0 100 0"/><path class="wv w2" d="M-60 285q50-10 100 0t100 0 100 0 100 0 100 0 100 0 100 0 100 0"/></g></svg></div><div class="tx"><small>${f[1]}</small><h3>${f[2]}</h3><p style="color:var(--mut)">Сучасне судно з GPS-моніторингом, резервними системами та екіпажем із міжнародними сертифікатами.</p><div class="spec">${f[3].map(x=>`<div>${x[0]}<b>${x[1]}</b></div>`).join('')}</div></div></div>`).join('');
+const R=[["Одеса → Констанца, Румунія",2,480],["Чорноморськ → Гданськ, Польща",21,1350],["Одеса → Роттердам, Нідерланди",18,1500],["Чорноморськ → Дубай, ОАЕ",24,1900],["Одеса → Нью-Йорк, США",26,3200],["Чорноморськ → Шанхай, Китай",38,2900]];
+document.getElementById('rt').innerHTML=R.map(r=>`<div class="row"><b>${r[0]}</b><span>${r[1]} днів</span><span>від $${r[2].toLocaleString('en-US')}</span><em>→</em></div>`).join('');
+const c1=document.getElementById('c1');c1.innerHTML=R.map((r,i)=>`<option value="${i}">${r[0]}</option>`).join('');
+function calc(){const r=R[+c1.value],q=Math.max(1,+document.getElementById('c4').value||1),p=Math.round(r[2]*document.getElementById('c2').value*document.getElementById('c3').value*q);
+ document.getElementById('rp').textContent='$'+p.toLocaleString('en-US');document.getElementById('rd').textContent='≈ '+r[1]+' днів у дорозі'}
+['c1','c2','c3','c4'].forEach(i=>document.getElementById(i).addEventListener('input',calc));calc();
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('ok').textContent='Дякуємо! Менеджер зв\'яжеться з вами протягом години.';e.target.reset()});
+</script>
+</body>
+</html>
